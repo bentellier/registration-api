@@ -1,6 +1,13 @@
 {
-  "dependencies": {
-    "cors": "^2.8.4",
-    "express": "*"
-  }
+	"name": "registration_api",
+	"version": "0.0.1",
+	"private": true,
+	"dependencies": {
+		"cors": "^2.8.4",
+		"express": "*",
+		"mysql": "^2.16.0",
+		"sequelize": "^4.38.1"
+	},
+	"author": "Ben Tellier - Feed",
+	"license": "ISC",
 }
