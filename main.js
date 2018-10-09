@@ -1,22 +1,38 @@
 const express = require("express");
 const app = express();
 const cors = require ("cors");
-
+const Sequelize = require('sequelize');
+const models = require('./models'); 
+// add the line above to controllers as well
 
 app.use(cors());
 
-app.use("/registration-server", (req, res) => {
-  const visitorName = `${req.query["name"]}` || "NO NAME GIVEN :O";
-  console.log("Name:", visitorName);
-  const visitorCompany = `${req.query["company"]}` || "NO COMPANY GIVEN :O";
-  console.log("Company:", visitorCompany);
-  const visitedName = `${req.query["visited"]}` || "NO VISITED NAME GIVEN :O";
-  console.log("Visited name:", visitedName);
-  const reasonSelection = `${req.query["reason"]}` || "NO NAME GIVEN :O";
-  console.log("Reason for visiting:", reasonSelection);
-  res.send(`REGISTERED: <br />Name: ${visitorName}<br /> Company: ${visitorCompany}<br /> Visited name: ${visitedName}<br /> Reason for visiting: ${reasonSelection}`);
+// console.log(models);
+
+app.use("/registration-server", async (req, res) => {
+  const name = `${req.query["name"]}` || "NO NAME GIVEN :O";
+  console.log("Name:", name);
+  const company = `${req.query["company"]}` || "NO COMPANY GIVEN :O";
+  console.log("Company:", company);
+  const visited = `${req.query["visited"]}` || "NO VISITED NAME GIVEN :O";
+  console.log("Visited name:", visited);
+  const reason = `${req.query["reason"]}` || "NO NAME GIVEN :O";
+  console.log("Reason for visiting:", reason);
+
+  // TO UNDERSTAND AND MOVE TO CONTROLLERS
+  await models.Visitor.create({
+    visitorName: name,
+    visitorCompany:company,
+    visitedName: visited,
+    reasonSelection: reason,
+  });
+
+  res.send(`REGISTERED: <br />Name: ${name}<br /> Company: ${company}<br /> Visited name: ${visited}<br /> Reason for visiting: ${reason}`);
 });
 
 app.listen(8888, () => {
   console.log(`server started at port 8888`);
 });
+
+
+// 

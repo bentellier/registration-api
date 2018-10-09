@@ -1,11 +1,14 @@
-const company = require('../models').company;
+const visitor = require('../models').visitor;
+
+
+
 module.exports = {
 	create (req, res) {
-return company
+return visitor
 	.create({
-		name: req.body.name,
+		visitorName: req.body.name,
 	})
-	.then(company => res.status(201).send(company))
+	.then(visitor => res.status(201).send(visitor))
 	.catch(error => res.status(400).send(error));
 	},
 };
