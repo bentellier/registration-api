@@ -1,7 +1,5 @@
 const visitor = require('../models').visitor;
 
-
-
 module.exports = {
 	create (req, res) {
 return visitor

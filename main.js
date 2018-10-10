@@ -5,6 +5,36 @@ const Sequelize = require('sequelize');
 const models = require('./models'); 
 // add the line above to controllers as well
 
+var mysql = require('mysql');
+var dbconn = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'root',
+  password : 'feed99',
+  database : 'registrationDb_development'
+});
+
+dbconn.connect(function(err, Visitors){
+  if(err){
+    console.log('Database connection error');
+  }else{
+    console.log('Database connection successful');
+    console.log(Visitors);
+  }
+});
+
+dbconn.query('SELECT * FROM Visitors',function(err, records){
+  if(err) throw err;
+
+  console.log('Data received from Db:n');
+  console.log(records);
+});
+
+dbconn.end(function(err) {
+  // Function to close database connection
+});
+
+
+
 app.use(cors());
 
 // console.log(models);
