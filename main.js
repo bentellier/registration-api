@@ -33,11 +33,9 @@ dbconn.end(function(err) {
   // Function to close database connection
 });
 
-
-
 app.use(cors());
 
-// console.log(models);
+console.log(models);
 
 app.use("/registration-server", async (req, res) => {
   const name = `${req.query["name"]}` || "NO NAME GIVEN :O";
