@@ -47,7 +47,7 @@ app.use("/registration-server", async (req, res) => {
   const reason = `${req.query["reason"]}` || "NO NAME GIVEN :O";
   console.log("Reason for visiting:", reason);
 
-  // TO UNDERSTAND AND MOVE TO CONTROLLERS
+  //  MOVE TO CONTROLLERS
   await models.Visitor.create({
     visitorName: name,
     visitorCompany:company,
